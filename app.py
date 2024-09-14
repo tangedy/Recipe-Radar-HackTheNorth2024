@@ -8,7 +8,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-EDAMAM_APP_ID = b6ce10da
-EDAMAM_APP_KEY = aac107954593b00f648c502ef1e8a981
+EDAMAM_APP_ID = os.getenv("EDAMAM_APP_ID")
+EDAMAM_APP_KEY = os.getenv("EDAMAM_APP_KEY")
 
 BASE_URL = "https://api.edamam.com/search"
