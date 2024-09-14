@@ -1,42 +1,23 @@
 import image from './images/test.png';
 import './styles/RecipeItems.css'  
 import React, { useState, useEffect } from 'react';
-import { getFromFlask } from './api.js';
 
  
 
 function RecipeItem(){
-    const [data, setData] = useState(null);
-    const [message, setMessage] = useState('');
-    const [dataString, setDataString] = useState('');  // New state for form input
-    const [imageString, setImageString] = useState('');  // New state for form input
-
-    useEffect(() => {
-        async function fetchData() {
-          try {
-            const responseData = await getFromFlask();  // Call the API
-            setDataString(JSON.stringify(responseData[0]).replace(/"/g, ''));  // Store the stringified data in the state
-            setImageString(JSON.stringify(responseData[2]).replace(/"/g, ''));  // Store the stringified data in the state
-          } catch (error) {
-            console.error('Error fetching data:', error);
-            setDataString('Error fetching data');  // Handle error case by setting an error message
-          }
-        }
     
-        fetchData();  // Call the function to fetch data
-      }, []); 
     
     return (
         <div className="RecipeItem">
             
             <div className="content">
 
-                <img src={imageString} id='Pic' className='Picture'/>
+                <img src={image} id='Pic' className='Picture'/>
 
                
                 <div className='content-text'>
                     
-                    <h1>Title: { dataString }</h1>
+                    <h1>Title:</h1>
                     
                     <p>Description: This is a bird Lorem ipsum dolor sit amet, consectetur
                        adipiscing elit. Phasellus tincidunt nisi vel nisi auctor, ac vehicula magna suscipit. 
