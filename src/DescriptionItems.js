@@ -3,15 +3,15 @@ import React from 'react';
 
  
 
-function DescriptionItems({values}){
+function DescriptionItems({values, title}){
     
-    
+    const valuesList = values.map(value => <li>{value}</li>)
     return (
         <div className="DescriptionItems">
             
             <div className="content">
-
-                
+                <ul>{valuesList}</ul>
+               
                 
             </div>
         </div>
