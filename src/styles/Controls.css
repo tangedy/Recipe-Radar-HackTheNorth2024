@@ -1,0 +1,11 @@
+.Controls{
+    width: 30%;
+    background-color: #cff0e386;
+    color: black; 
+
+    height: 80%; 
+    flex-shrink: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 10px;
+}

@@ -19,7 +19,7 @@ function RecipeItem({label,image,url,dietLabels,ingredients,calories}){
                
                 <div className='content-text'>
                     
-                    <h1>Title: {label}</h1>
+                    <h1>{label}</h1>
                     
                     <DescriptionItems values = {ingredients}></DescriptionItems>
 
