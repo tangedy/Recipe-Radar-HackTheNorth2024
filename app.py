@@ -20,7 +20,6 @@ URL = "https://api.edamam.com/api/recipes/v2"
 
 @app.route("/recipe", methods=["GET"])
 def search():
-
     query = request.args.get("q")
     if not query:
         return jsonify({"error": "No query provided"}), 400
@@ -40,7 +39,9 @@ def search():
         response = requests.get(URL, params=params)
 
         if response.status_code == 200:
-            return get_parameters(response)
+            get_parameters(response)
+        elif response.status_code == 429:
+            return jsonify({"error: too many requests"}), response.status_code
         else:
             return jsonify({"error"}), response.status_code
 
@@ -92,6 +93,4 @@ def get_parameters(response):
 
 
 if __name__ == "__main__":
-    # debugging purposes
-
     app.run(debug=True)
