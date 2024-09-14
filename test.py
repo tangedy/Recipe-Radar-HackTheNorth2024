@@ -7,30 +7,29 @@ app = Flask(__name__)
 def home():
     return 'Hello World!'
 
-ID  = '149ace87'
-KEY = '9cb5fe085bb0adf9f354818967e21664'
-URL = 'https://api.edamam.com/search'
+ID  = '1e3d80df'
+KEY = 'a5dc1f0f05d4100186953180b1c1bc3a'
+URL = 'https://api.edamam.com/api/recipes/v2'
 
-@app.route('/recipe', methods=['GET', 'POST'])
+
+@app.route('/recipe', methods=['GET'])
 def search():
-    query = request.args.get('query')
+    query = request.args.get('q')
     if not query:
         return jsonify({'error': 'No query provided'}), 400
     params = {
+        'type': 'public',
         'q': query,
-        'id': ID,
-        'key': KEY,
-        'to': 2
+        'app_id': ID,
+        'app_key': KEY,
     }
 
     try:
-        url = 'https://developer.edamam.com//admin/applications/1409624945949'
-        response = requests.get(url)
+        response = requests.get(URL, params=params)
 
         if response.status_code == 200:
             data = response.json()
             return jsonify(data)
-
         else:
             return jsonify({"error":"Bitch"}), response.status_code
     except Exception as e:
@@ -38,4 +37,4 @@ def search():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
