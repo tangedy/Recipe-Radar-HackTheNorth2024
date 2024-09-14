@@ -81,7 +81,19 @@ def get_parameters(response):
         label = recipe.get("label", "No label")
         url = recipe.get("url", "No URL")
         image = recipe.get("image", "No image")
-        recipes.append({"label": label, "url": url, "image": image})
+        dietLabels = recipe.get("dietLabels", [])
+        ingredients = recipe.get("ingredientLines", [])
+        calories = round(recipe.get("calories", 0))
+        recipes.append(
+            {
+                "label": label,
+                "url": url,
+                "image": image,
+                "dietLabels": dietLabels,
+                "ingredients": ingredients,
+                "calories": calories,
+            }
+        )
     return recipes
 
 
