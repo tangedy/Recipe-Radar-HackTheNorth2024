@@ -39,7 +39,7 @@ def search():
         response = requests.get(URL, params=params)
 
         if response.status_code == 200:
-            get_parameters(response)
+            return get_parameters(response)
         elif response.status_code == 429:
             return jsonify({"error: too many requests"}), response.status_code
         else:
