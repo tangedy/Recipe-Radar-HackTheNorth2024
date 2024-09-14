@@ -1,6 +1,6 @@
 import image from './images/test.png';
 import './styles/RecipeItems.css'  
-
+import React from 'react';
 
 
  
