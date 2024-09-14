@@ -1,10 +1,10 @@
-import image from './images/test.png';
+//import image from './images/test.png';
 import './styles/RecipeItems.css'  
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
  
 
-function RecipeItem(){
+function RecipeItem({label,image,dietLabels,ingredients,calories}){
     
     
     return (
@@ -17,8 +17,9 @@ function RecipeItem(){
                
                 <div className='content-text'>
                     
-                    <h1>Title:</h1>
+                    <h1>Title: {label}</h1>
                     
+                    <p>Calories: {calories}</p>
                     <p>Description: This is a bird Lorem ipsum dolor sit amet, consectetur
                        adipiscing elit. Phasellus tincidunt nisi vel nisi auctor, ac vehicula magna suscipit. 
                        Proin tincidunt felis sit amet libero tincidunt, ac ullamcorper magna facilisis. Nulla facilisi. 

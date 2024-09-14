@@ -5,12 +5,15 @@
   align-items: center;
   
   width: 80%;
-  border-radius: 50px;
+  border-style: solid;
+  border-radius: 100px;
+  border-color: black;
 }
 
 .content{
   display: flex;
   margin-left: 50px;
+  
 }
 
 
@@ -30,5 +33,8 @@
     margin-bottom: 30px;
     max-width: 400px;
     max-height:200px;
+    border-style: solid;
+    border-radius: 50px;
+    border-color: black;
 }
 

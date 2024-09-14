@@ -2,12 +2,19 @@ import React from 'react';
 import RecipeItem from './RecipeItems.js';
 import './styles/RecipeList.css';  
 
-function RecipeList() {
+function RecipeList({recipes}) {
     return (
         <div className="RecipeList">
-            <RecipeItem />
-            <RecipeItem />
-            <RecipeItem />
+            {recipes && recipes.length > 0 ? (recipes.map((recipe, index) => (
+                <RecipeItem 
+                    image={recipe.image}
+                    label={recipe.label}
+                    url={recipe.url}
+                    dietLabels={recipe.dietLabels}
+                    ingredients={recipe.ingredients}
+                    calories={recipe.calories}
+                />
+            ))) : (<p>No recipes available</p>)}
         </div>
     );
 }
