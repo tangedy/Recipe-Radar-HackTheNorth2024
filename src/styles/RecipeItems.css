@@ -1,0 +1,34 @@
+.RecipeItem {
+  background-color: #cff0e386;
+  color: black;
+  display: flex;
+  align-items: center;
+  
+  width: 80%;
+  border-radius: 50px;
+}
+
+.content{
+  display: flex;
+  margin-left: 50px;
+}
+
+
+.content-text{
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  text-align: left;
+  max-width: 1200px;
+  
+  margin-bottom: 30px;
+}
+
+.Picture {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-width: 400px;
+    max-height:200px;
+}
+
