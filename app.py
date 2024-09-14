@@ -75,21 +75,14 @@ def get_parameters(response):
     ingredients = []
 
     data = response.json()
-    if "label" in data["hits"][0]["recipe"]:
-        label = str(data["hits"][0]["recipe"]["label"])
-    if "url" in data["hits"][0]["recipe"]:
-        url = str(data["hits"][0]["recipe"]["url"])
-    if "image" in data["hits"][0]["recipe"]:
-        image = str(data["hits"][0]["recipe"]["image"])
-    if "dietLabels" in data["hits"][0]["recipe"]:
-        dietLabels = data["hits"][0]["recipe"]["dietLabels"]
-    if "ingredientLines" in data["hits"][0]["recipe"]:
-        ingredients = data["hits"][0]["recipe"]["ingredientLines"]
-    if "calories" in data["hits"][0]["recipe"]:
-        calories = round(data["hits"][0]["recipe"]["calories"])
-
-    printout = [label, url, image, dietLabels, ingredients, calories]
-    return printout
+    recipes = []
+    for hit in data.get("hits", []):
+        recipe = hit.get("recipe", {})
+        label = recipe.get("label", "No label")
+        url = recipe.get("url", "No URL")
+        image = recipe.get("image", "No image")
+        recipes.append({"label": label, "url": url, "image": image})
+    return recipes
 
 
 if __name__ == "__main__":
