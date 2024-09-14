@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
 import requests
+from flask_cors import CORS
+
 
 app = Flask(__name__)
 
-
+CORS(app)
 @app.route("/")
 def home():
     return "Hello World!"
@@ -16,15 +18,15 @@ URL = "https://api.edamam.com/api/recipes/v2"
 
 @app.route("/recipe", methods=["GET"])
 def search():
-    """
+
     query = request.args.get("q")
     if not query:
         return jsonify({"error": "No query provided"}), 400
-    """
+
     params = {
         "type": "public",
         # placeholder query
-        "q": "hamburger",
+        "q": query,
         "app_id": ID,
         "app_key": KEY,
         "from": 0,
@@ -89,5 +91,5 @@ def get_parameters(response):
 
 if __name__ == "__main__":
     # debugging purposes
-    print(search())
+
     app.run(debug=True)
