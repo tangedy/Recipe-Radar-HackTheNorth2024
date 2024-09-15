@@ -54,7 +54,7 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
           <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet"/>
           <div className="header-container" style={{display: 'flex', gap: '20px'}}>
             <img 
-              style={{width: '30%'}}
+              style={{width: '30%',height:'fit-content'}}
               src={logo2}
               alt="Header Image"
               className="header-image"
@@ -65,7 +65,7 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
 
           
 
-          <div style={{ marginTop: '50%', width: '80%' }}/>
+          <div style={{ marginTop: '20%', width: '80%' }}/>
           
             <div className="form-group">
                 <form onSubmit={handleSearch}>

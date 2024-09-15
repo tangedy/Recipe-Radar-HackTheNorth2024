@@ -4,7 +4,7 @@
     gap: 20px; /* Adds some space between each RecipeItem */
     padding: 20px; /* Optional padding around the list */
     overflow-y: auto; /* Makes the RecipeList scrollable */
- 
+    width: 60%;
 }
 
 .placeholder{
