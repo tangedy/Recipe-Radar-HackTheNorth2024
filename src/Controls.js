@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 
 
 
-const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,setDropDownOption, mealType,setMealType}) => {
-
+const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,setDropDownOption, mealType, setMealType, dishType, setDishType, ecoScore, setEcoScore}) => {
+    
     const dropDownHealth = (e) => {
         setDropDownOption(e.target.value);
       };
@@ -20,16 +20,36 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
                               {value: 'wheat-free', label: 'Wheat Free'},
                               {value: 'kosher', label: 'Kosher'}
       ];
+    const dropDownEco = (f) => {
+        setEcoScore(f.target.value);
+      }
+
+      const ecoOptions = [{value: 'A+', label: 'A+'},
+                          {value: 'A', label: 'A'},
+                          {value: 'B', label: 'B'},
+                          {value: 'C', label: 'C'},
+                          {value: 'D', label: 'D'},
+                          {value: 'E', label: 'E'},
+                          {value: 'F', label: 'F'},
+                          {value: 'G', label: 'G'}
+      ];
+    
     
       const mealTypeButtons = (mealType) => {
         setMealType(mealType);
       }
+
+      const dishTypeButtons = (dishType) => {
+        setDishType(dishType);
+      }
+
       
     return (
         <div className = 'Controls'>
+          <div style={{width:'80%'}}>
             <div className="form-group">
-                <form onSubmit={handleSearch} className="mt-4">
-              
+                <form onSubmit={handleSearch}>
+                <div style={{width: '95%'}}>
                 <input 
                 type="text" 
                 value={searchQuery} 
@@ -37,13 +57,11 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search for recipes"
                 />
-                
-  
-                <div style={{ marginTop: '10px' }}></div>
-
+                </div>
                 <button type="submit" className="btn btn-custom">Search</button>
                 
                 </form>
+                </div>
             </div>    
             <div style={{ marginTop: '30px' , width: '80%'}}>
             <label htmlFor="healthOptions">Dietary Restrictions: </label>
@@ -51,7 +69,7 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
             onChange={dropDownHealth}
             className="form-control"
 >
-                <option value="">--Please choose an option--</option>
+                <option value="">--None--</option>
                 {healthOptions.map((healthOptions) => (
                 <option key={healthOptions.value} value={healthOptions.value}>
                     {healthOptions.label}
@@ -59,34 +77,87 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
                 ))}
             </select>
             </div>
-            <div className='meal-type-buttons'style={{ marginTop: '30px' }}>
+            <div className="row">
+            <div className='meal-type-buttons'style={{ marginTop: '20px'}}>
             <button
             type="button"
             className="btn btn-custom-hover"         
              onClick={() => mealTypeButtons('breakfast')}
-            style={{backgroundColor: mealType === 'breakfast' ? 'aquamarine' : 'white', width: '100px'}}
+            style={{backgroundColor: mealType === 'breakfast' ? 'lightblue' : 'white', width: '120px'}}
             >
             Breakfast
             </button>
-            <button
-            type="button"
-            //className={`btn btn-${mealType === 'lunch' ? 'light-blue' : 'white'}`}
-            className="btn btn-custom-hover"         
-            onClick={() => mealTypeButtons('lunch')}
-            style={{backgroundColor: mealType === '  lunch  ' ? 'aquamarine' : 'white', width: '100px'}}
-            >
-              Lunch  
-            </button>
+            <div class="divider"></div>
             <button
             type="button"
             //className={`btn btn-${mealType === 'dinner' ? 'light-blue' : 'white'}`}
             className="btn btn-custom-hover"         
-
-            onClick={() => mealTypeButtons('dinner')}
-            style={{backgroundColor: mealType === '  dinner ' ? 'aquamarine' : 'white', width: '100px'}}
+            onClick={() => mealTypeButtons('lunch')}
+            style={{backgroundColor: mealType === 'lunch' ? 'lightblue' : 'white', width: '120px'}}
             >
-              Dinner 
+            Lunch
             </button>
+            <div class="divider"></div>
+            <button
+            type="button"
+            //className={`btn btn-${mealType === 'dinner' ? 'light-blue' : 'white'}`}
+            className="btn btn-custom-hover"         
+            onClick={() => mealTypeButtons('dinner')}
+            style={{backgroundColor: mealType === 'dinner' ? 'lightblue' : 'white', width: '120px'}}
+            >
+            Dinner 
+            </button>
+            </div>
+
+            <div className="row mt-2">
+            <button
+            type="button"
+            //className={`btn btn-${mealType === 'dinner' ? 'light-blue' : 'white'}`}
+            className="btn btn-custom-hover"         
+            onClick={() => mealTypeButtons('snack')}
+            style={{backgroundColor: mealType === 'snack' ? 'lightblue' : 'white', width: '120px'}}
+            >
+            Snack
+            </button>
+            
+            <div class="divider"></div>
+
+            <button
+            type="button"
+            //className={`btn btn-${mealType === 'dinner' ? 'light-blue' : 'white'}`}
+            className="btn btn-custom-hover"         
+            onClick={() => dishTypeButtons('desserts')}
+            style={{backgroundColor: dishType === 'desserts' ? 'lightblue' : 'white', width: '120px'}}
+            >
+            Dessert
+            </button>
+            <div class="divider"></div>
+
+            <button
+            type="button"
+            //className={`btn btn-${mealType === 'dinner' ? 'light-blue' : 'white'}`}
+            className="btn btn-custom-hover"         
+            onClick={() => dishTypeButtons('drinks')}
+            style={{backgroundColor: dishType === 'drinks' ? 'lightblue' : 'white', width: '120px'}}
+            >
+            Drink
+            </button>
+            </div>
+            </div>
+
+            <div style={{ marginTop: '30px' , width: '80%'}}>
+            <label htmlFor="ecoOptions">Eco Score: </label>
+            <select id="ecoOptions" value={ecoScore} 
+            onChange={dropDownEco}
+            className="form-control"
+>
+                <option value="">--None--</option>
+                {ecoOptions.map((ecoOptions) => (
+                <option key={ecoOptions.value} value={ecoOptions.value}>
+                    {ecoOptions.label}
+                </option>
+                ))}
+            </select>
             </div>
         </div>
         

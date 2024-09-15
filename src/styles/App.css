@@ -21,7 +21,7 @@ body {
 }
 
 .controls {
-  width: 50%;
+  width: 33%;
   /* Set the width for controls to 30% of the screen */
   padding: 10px;
   box-sizing: border-box;

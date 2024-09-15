@@ -13,6 +13,7 @@ function RecipeList({recipes}) {
                     dietLabels={recipe.dietLabels}
                     ingredients={recipe.ingredients}
                     calories={recipe.calories}
+                    eco={recipe.eco}
                 />
             ))) : (<p>No recipes available</p>)}
         </div>

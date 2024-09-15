@@ -18,8 +18,8 @@
 
 
 .Controls .form-group {
-  width: 80%; /* Make the form take up 80% of the width of the Controls container */
-  margin-bottom: 30px;
+  width: 100%; /* Make the form take up 80% of the width of the Controls container */
+  margin-bottom: 20px;
 }
 
 .Controls input[type="text"], .Controls select {

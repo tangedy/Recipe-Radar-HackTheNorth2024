@@ -10,9 +10,11 @@ import Controls from './Controls.js';
 function App() {
   const[searchQuery, setSearchQuery] = useState('');
   const[error, setError] = useState(null);
-  const [data, setData] = useState(null);
+  const[data, setData] = useState(null);
   const[dropDownOption, setDropDownOption] = useState('');
   const[mealType, setMealType] = useState('');
+  const[ecoScore, setEcoScore] = useState('');
+  const[dishType, setDishType] = useState('');
 
 
   
@@ -25,7 +27,9 @@ function App() {
         params: {
           q: searchQuery,
           health_filter: dropDownOption,
-          mealType: mealType
+          mealType: mealType,
+          dishType: dishType,
+          co2EmissionsClass: ecoScore
         }});
       setData(userQuery.data);
     } catch (err) {
@@ -43,7 +47,9 @@ function App() {
           {/* Search bar and controls will appear on the left side */}
           <Controls searchQuery = {searchQuery} setSearchQuery={setSearchQuery} handleSearch={handleSearch}
                     dropDownOption = {dropDownOption} setDropDownOption={setDropDownOption}
-                    mealType = {mealType} setMealType = {setMealType}></Controls>
+                    mealType = {mealType} setMealType = {setMealType}
+                    dishType = {dishType} setDishType = {setDishType}
+                    ecoScore = {ecoScore} setEcoScore = {setEcoScore}></Controls>
         </div>
         
       
