@@ -29,10 +29,11 @@ body {
   overflow: hidden;
   /* Prevents overflowing content */
   background-color: #cff0e386;
-  align-items: center;
+  /* align-items: center; */
   display: flex;
   justify-content: center;
   /* Centers content horizontally */
+  
 }
 
 .recipe-list {
