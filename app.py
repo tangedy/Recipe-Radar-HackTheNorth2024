@@ -20,9 +20,11 @@ URL = "https://api.edamam.com/api/recipes/v2"
 
 @app.route("/recipe", methods=["GET"])
 def search():
-    query = request.args.get("q")
-    if not query:
-        return jsonify({"error": "No query provided"}), 400
+    query = request.args.get("q", '').strip()
+    health = request.args.get("health", '').strip()
+    mealType = request.args.get("mealType", '').strip()
+    dishType = request.args.get("dishType", '').strip()
+    ecoScore = request.args.get("co2EmissionsClass", '').strip()
 
     params = {
         "type": "public",
@@ -31,9 +33,33 @@ def search():
         "app_id": ID,
         "app_key": KEY,
         "from": 0,
-        "to": 10,
-        "health": [],
+        "to": 5,
+        "health": health,
+        "mealType": mealType,
+        "dishType": dishType,
+        "co2EmissionsClass": ecoScore
     }
+
+    if not query:
+        del params["q"]
+    else:
+        params["q"] = query
+    if not health:
+        del params["health"]
+    else:
+        params["health"] = health
+    if not mealType:
+        del params["mealType"]
+    else:
+        params["mealType"] = mealType
+    if not dishType:
+        del params["dishType"]
+    else:
+        params["dishType"] = dishType
+    if not ecoScore:
+        del params["co2EmissionsClass"]
+    else:
+        params["co2EmissionsClass"] = ecoScore
 
     try:
         response = requests.get(URL, params=params)
@@ -41,9 +67,9 @@ def search():
         if response.status_code == 200:
             return get_parameters(response)
         elif response.status_code == 429:
-            return jsonify({"error: too many requests"}), response.status_code
+            return jsonify("error: too many requests"), response.status_code
         else:
-            return jsonify({"error"}), response.status_code
+            return jsonify("error"), response.status_code
 
     except Exception as e:
         return jsonify({"error": str(e)}), response.status_code
@@ -65,7 +91,6 @@ def example_request():
         response.raise_for_status()
 
         # Print all recipes
-        print(get_parameters(response))
 
     except requests.exceptions.RequestException as e:
         print(f"Request failed: {e}")
@@ -84,6 +109,8 @@ def get_parameters(response):
         dietLabels = recipe.get("dietLabels", [])
         ingredients = recipe.get("ingredientLines", [])
         calories = round(recipe.get("calories", 0))
+        eco = recipe.get("co2EmissionsClass", "No Score Available")
+        print(recipe)
         recipes.append(
             {
                 "label": label,
@@ -92,6 +119,7 @@ def get_parameters(response):
                 "dietLabels": dietLabels,
                 "ingredients": ingredients,
                 "calories": calories,
+                "eco": eco,
             }
         )
     return recipes
@@ -99,4 +127,3 @@ def get_parameters(response):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
