@@ -1,0 +1,53 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  height: 100vh;
+  /* Full screen height */
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  /* Changed to row for horizontal layout */
+  height: 100%;
+}
+
+.controls {
+  width: 33%;
+  /* Set the width for controls to 30% of the screen */
+  padding: 10px;
+  box-sizing: border-box;
+  /* background-color: #e00b0b; Optional: Add background to distinguish the controls section */
+  overflow: hidden;
+  /* Prevents overflowing content */
+  background-color: #cff0e386;
+  /* align-items: center; */
+  display: flex;
+  justify-content: center;
+  /* Centers content horizontally */
+  
+}
+
+.recipe-list {
+  flex-grow: 1;
+  /* Takes the remaining width */
+  overflow-y: auto;
+  /* Makes RecipeList scrollable */
+
+  padding: 10px;
+  box-sizing: border-box;
+  /* background-color: #000000; Optional: Different background for the recipe list */
+  align-items: center;
+  display: flex;
+
+  justify-content: center;
+  /* Centers content horizontally */
+}

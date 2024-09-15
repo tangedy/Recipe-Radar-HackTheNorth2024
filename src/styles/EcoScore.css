@@ -1,0 +1,12 @@
+.eco-score-box {
+    padding: 10px;              
+    font-size: 1.2rem;          
+    font-weight: bold;          
+    color: black;               
+    border: 3px solid;          
+    border-radius: 8px;         
+    display: inline-block;      
+    margin-top: 10px;           
+    min-width: 100px;           
+    text-align: center;        
+  }

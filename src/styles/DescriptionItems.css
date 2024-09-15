@@ -1,0 +1,10 @@
+.DescriptionItems{
+    display: flex;
+}
+
+.Items{
+    border-radius: 20px;
+    border-color: black;
+    height: 50;
+    background-color: gray;
+}
