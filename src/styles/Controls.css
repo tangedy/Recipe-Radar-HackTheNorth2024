@@ -1,9 +1,60 @@
 .Controls{
-   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%; 
+    height: 100%; /* Make the controls fill the container vertically */
+    padding: 20px;
+    box-sizing: border-box;
+    flex-grow: 1; /* Allow the Controls to grow and take up more space */
 
     .btn-custom {
         background-color: lightblue;
         color: white;
         border: none;
       }
+}
+
+
+.Controls .form-group {
+  width: 80%; /* Make the form take up 80% of the width of the Controls container */
+  margin-bottom: 30px;
+}
+
+.Controls input[type="text"], .Controls select {
+  width: 100%; /* Full width input and select fields */
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.Controls button {
+  width: 100%; /* Full width buttons */
+  padding: 10px;
+  background-color: #007bff;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+
+.Controls .btn-custom-hover {
+  padding: 10px;
+   /* Full width for meal type buttons */
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.meal-type-buttons{
+    display: flex;
+    flex-direction: row;
+    row-gap: 10px;
+    width:fit-content;
 }

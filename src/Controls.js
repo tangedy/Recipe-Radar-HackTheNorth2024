@@ -27,9 +27,9 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
       
     return (
         <div className = 'Controls'>
-            
-            <form onSubmit={handleSearch} className="mt-4">
-              <div className="form-group">
+            <div className="form-group">
+                <form onSubmit={handleSearch} className="mt-4">
+              
                 <input 
                 type="text" 
                 value={searchQuery} 
@@ -37,14 +37,15 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search for recipes"
                 />
-                </div>
+                
   
                 <div style={{ marginTop: '10px' }}></div>
 
                 <button type="submit" className="btn btn-custom">Search</button>
                 
-            </form>
-            <div style={{ marginTop: '30px' }}></div>
+                </form>
+            </div>    
+            <div style={{ marginTop: '30px' , width: '80%'}}>
             <label htmlFor="healthOptions">Dietary Restrictions: </label>
             <select id="healthOptions" value={dropDownOption} 
             onChange={dropDownHealth}
@@ -57,13 +58,13 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
                 </option>
                 ))}
             </select>
-
-            <div style={{ marginTop: '30px' }}>
+            </div>
+            <div className='meal-type-buttons'style={{ marginTop: '30px' }}>
             <button
             type="button"
             className="btn btn-custom-hover"         
              onClick={() => mealTypeButtons('breakfast')}
-            style={{backgroundColor: mealType === 'breakfast' ? 'aquamarine' : 'white'}}
+            style={{backgroundColor: mealType === 'breakfast' ? 'aquamarine' : 'white', width: '100px'}}
             >
             Breakfast
             </button>
@@ -72,9 +73,9 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
             //className={`btn btn-${mealType === 'lunch' ? 'light-blue' : 'white'}`}
             className="btn btn-custom-hover"         
             onClick={() => mealTypeButtons('lunch')}
-            style={{backgroundColor: mealType === 'lunch' ? 'aquamarine' : 'white'}}
+            style={{backgroundColor: mealType === '  lunch  ' ? 'aquamarine' : 'white', width: '100px'}}
             >
-            Lunch
+              Lunch  
             </button>
             <button
             type="button"
@@ -82,9 +83,9 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
             className="btn btn-custom-hover"         
 
             onClick={() => mealTypeButtons('dinner')}
-            style={{backgroundColor: mealType === 'dinner' ? 'aquamarine' : 'white'}}
+            style={{backgroundColor: mealType === '  dinner ' ? 'aquamarine' : 'white', width: '100px'}}
             >
-            Dinner
+              Dinner 
             </button>
             </div>
         </div>
