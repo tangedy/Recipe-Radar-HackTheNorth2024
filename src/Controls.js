@@ -1,6 +1,6 @@
 import './styles/Controls.css'  
 import React, { useState, useEffect } from 'react';
-
+import logo from './images/logo.png';
 
 
 const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,setDropDownOption, mealType, setMealType, dishType, setDishType, ecoScore, setEcoScore}) => {
@@ -47,6 +47,19 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
     return (
         <div className = 'Controls'>
           <div style={{width:'80%'}}>
+
+          <div className="header-container" style={{display: 'flex'}}>
+            <img 
+              style={{width: '30%'}}
+              src={logo}
+              alt="Header Image"
+              className="header-image"
+            />
+            <h2 className="header-text">Recipe Radar</h2>
+          </div>
+
+          <div style={{ marginTop: '50%', width: '80%' }}/>
+          
             <div className="form-group">
                 <form onSubmit={handleSearch}>
                 <div style={{width: '95%'}}>

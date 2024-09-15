@@ -1,7 +1,7 @@
 import React from 'react';
 import RecipeItem from './RecipeItems.js';
 import './styles/RecipeList.css';  
-import pcImage from './images/image.png';
+import pcImage from './images/placeholder.png';
 
 function RecipeList({recipes}) {
     return (
