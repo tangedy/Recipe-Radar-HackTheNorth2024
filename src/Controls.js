@@ -1,6 +1,5 @@
-//import './styles/Controls.css'  
+import './styles/Controls.css'  
 import React, { useState, useEffect } from 'react';
-
 
 
 
@@ -29,18 +28,28 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
     return (
         <div className = 'Controls'>
             
-            <form onSubmit={handleSearch}>
+            <form onSubmit={handleSearch} className="mt-4">
+              <div className="form-group">
                 <input 
                 type="text" 
                 value={searchQuery} 
+                className="form-control"
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search for recipes"
                 />
-                <button type="submit">Search</button>
-            </form>
+                </div>
+  
+                <div style={{ marginTop: '10px' }}></div>
 
-            <label htmlFor="healthOptions">Choose an option: </label>
-            <select id="healthOptions" value={dropDownOption} onChange={dropDownHealth}>
+                <button type="submit" className="btn btn-custom">Search</button>
+                
+            </form>
+            <div style={{ marginTop: '30px' }}></div>
+            <label htmlFor="healthOptions">Dietary Restrictions: </label>
+            <select id="healthOptions" value={dropDownOption} 
+            onChange={dropDownHealth}
+            className="form-control"
+>
                 <option value="">--Please choose an option--</option>
                 {healthOptions.map((healthOptions) => (
                 <option key={healthOptions.value} value={healthOptions.value}>
@@ -52,29 +61,35 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
             <div style={{ marginTop: '30px' }}>
             <button
             type="button"
-            onClick={() => mealTypeButtons('breakfast')}
-            style={{backgroundColor: mealType === 'breakfast' ? 'blue' : 'white'}}
+            className="btn btn-custom-hover"         
+             onClick={() => mealTypeButtons('breakfast')}
+            style={{backgroundColor: mealType === 'breakfast' ? 'aquamarine' : 'white'}}
             >
             Breakfast
             </button>
             <button
             type="button"
+            //className={`btn btn-${mealType === 'lunch' ? 'light-blue' : 'white'}`}
+            className="btn btn-custom-hover"         
             onClick={() => mealTypeButtons('lunch')}
-            style={{backgroundColor: mealType === 'lunch' ? 'blue' : 'white'}}
+            style={{backgroundColor: mealType === 'lunch' ? 'aquamarine' : 'white'}}
             >
             Lunch
             </button>
             <button
             type="button"
+            //className={`btn btn-${mealType === 'dinner' ? 'light-blue' : 'white'}`}
+            className="btn btn-custom-hover"         
+
             onClick={() => mealTypeButtons('dinner')}
-            style={{backgroundColor: mealType === 'dinner' ? 'blue' : 'white'}}
+            style={{backgroundColor: mealType === 'dinner' ? 'aquamarine' : 'white'}}
             >
             Dinner
             </button>
             </div>
-        
-        
         </div>
+        
+        
     );
   };
 
