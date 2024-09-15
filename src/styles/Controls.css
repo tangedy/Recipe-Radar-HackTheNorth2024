@@ -59,6 +59,9 @@
     width:fit-content;
 }
 
-.header-container{
-  width: 30vh;
+.header-text{
+  font-family: "Leckerli One", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3em;
 }

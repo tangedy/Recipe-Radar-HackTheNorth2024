@@ -1,6 +1,7 @@
 import './styles/Controls.css'  
 import React, { useState, useEffect } from 'react';
 import logo from './images/logo.png';
+import logo2 from './images/logo2.png';
 
 
 const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,setDropDownOption, mealType, setMealType, dishType, setDishType, ecoScore, setEcoScore}) => {
@@ -45,18 +46,24 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
 
       
     return (
+      
+      
         <div className = 'Controls'>
-          <div style={{width:'80%'}}>
-
-          <div className="header-container" style={{display: 'flex'}}>
+          <link rel="preconnect" href="https://fonts.googleapis.com"/>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+          <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet"/>
+          <div className="header-container" style={{display: 'flex', gap: '20px'}}>
             <img 
               style={{width: '30%'}}
-              src={logo}
+              src={logo2}
               alt="Header Image"
               className="header-image"
             />
             <h2 className="header-text">Recipe Radar</h2>
           </div>
+          <div style={{width:'80%'}}>
+
+          
 
           <div style={{ marginTop: '50%', width: '80%' }}/>
           
