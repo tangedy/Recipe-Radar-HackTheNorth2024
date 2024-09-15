@@ -1,6 +1,7 @@
 import React from 'react';
 import RecipeItem from './RecipeItems.js';
 import './styles/RecipeList.css';  
+import pcImage from './images/image.png';
 
 function RecipeList({recipes}) {
     return (
@@ -15,7 +16,7 @@ function RecipeList({recipes}) {
                     calories={recipe.calories}
                     eco={recipe.eco}
                 />
-            ))) : (<p>No recipes available</p>)}
+            ))) : (<img className = 'placeholder' src={pcImage} alt=""/>)}
         </div>
     );
 }

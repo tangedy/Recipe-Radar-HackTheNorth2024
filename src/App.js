@@ -53,9 +53,7 @@ function App() {
         </div>
         
       
-        
-        
-        <RecipeList recipes={data}></RecipeList>
+       <RecipeList recipes={data}></RecipeList>
 
       </header>
   

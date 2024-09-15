@@ -1,9 +1,15 @@
-/* Container that stacks items vertically */
 .RecipeList {
     display: flex;
     flex-direction: column; /* Stacks the RecipeItem components vertically */
     gap: 20px; /* Adds some space between each RecipeItem */
     padding: 20px; /* Optional padding around the list */
     overflow-y: auto; /* Makes the RecipeList scrollable */
+ 
+}
+
+.placeholder{
+    padding-left: 20%;
+    height: 100%;
+    opacity: 0.5;
 }
 

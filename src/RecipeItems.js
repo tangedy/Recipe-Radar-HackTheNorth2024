@@ -1,4 +1,3 @@
-//import image from './images/test.png';
 import DescriptionItems from './DescriptionItems';
 import './styles/RecipeItems.css'  
 import React from 'react';
