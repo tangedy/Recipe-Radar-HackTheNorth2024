@@ -8,6 +8,21 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
     
     const dropDownHealth = (e) => {
         setDropDownOption(e.target.value);
+    };
+
+    
+    const getEcoDescription = (score) => {
+        switch(score) {
+            case 'A+': return 'Excellent';
+            case 'A': return 'Very Good';
+            case 'B': return 'Good';
+            case 'C': return 'Fair';
+            case 'D': return 'Poor';
+            case 'E': return 'Very Poor';
+            case 'F': return 'Bad';
+            case 'G': return 'Very Bad';
+            default: return '';
+        }
       };
       const healthOptions = [{value: 'crustacean-free', label: 'Shellfish Free'},
                               {value: 'dairy-free', label: 'Dairy Free'},
@@ -61,124 +76,153 @@ const Controls = ({ searchQuery, setSearchQuery, handleSearch , dropDownOption,s
             />
             <h2 className="header-text">Recipe Radar</h2>
           </div>
-          <div style={{width:'80%'}}>
-
-          
-
-          <div style={{ marginTop: '20%', width: '80%' }}/>
-          
-            <div className="form-group">
-                <form onSubmit={handleSearch}>
-                <div style={{width: '95%'}}>
-                <input 
+ 
+          <div className="form-group">
+            <form onSubmit={handleSearch} role="search" aria-label="Recipe search form">
+              <label htmlFor="searchInput" className="sr-only">
+                Search for recipes
+              </label>
+              <input 
+                id="searchInput"
                 type="text" 
                 value={searchQuery} 
                 className="form-control"
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search for recipes"
-                />
-                </div>
-                <button type="submit" className="btn btn-custom">Search</button>
-                
-                </form>
-                </div>
-            </div>    
-            <div style={{ marginTop: '30px' , width: '80%'}}>
-            <label htmlFor="healthOptions">Dietary Restrictions: </label>
-            <select id="healthOptions" value={dropDownOption} 
-            onChange={dropDownHealth}
-            className="form-control"
->
-                <option value="">--None--</option>
-                {healthOptions.map((healthOptions) => (
-                <option key={healthOptions.value} value={healthOptions.value}>
-                    {healthOptions.label}
+                placeholder="Search for recipes (e.g., pasta, chicken, vegetarian)"
+                aria-describedby="search-help"
+                autoComplete="off"
+              />
+              <div id="search-help" className="sr-only">
+                Enter keywords to search for recipes. You can search by ingredient, dish name, or cuisine type.
+              </div>
+              <button 
+                type="submit" 
+                className="btn btn-custom"
+                aria-label="Search for recipes"
+              >
+                Search
+              </button>
+            </form>
+          </div>
+          
+          {/* Dietary Restrictions Section */}
+          <div className="dietary-section">
+            <label htmlFor="healthOptions">
+              Dietary Restrictions & Allergies
+            </label>
+            <select 
+              id="healthOptions" 
+              value={dropDownOption} 
+              onChange={dropDownHealth}
+              className="form-control"
+              aria-describedby="dietary-help"
+            >
+              <option value="">All dietary preferences</option>
+              {healthOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
                 </option>
                 ))}
             </select>
+            <div id="dietary-help" className="sr-only">
+              Filter recipes based on dietary restrictions and allergies. This helps find safe options for your specific needs.
+
             </div>
-            <div className="row">
-            <div className='meal-type-buttons'style={{ marginTop: '20px'}}>
-            <button
-            type="button"
-            className="btn btn-custom-hover"         
-             onClick={() => mealTypeButtons('breakfast')}
-            style={{backgroundColor: mealType === 'breakfast' ? 'lightblue' : 'white', width: '120px'}}
-            >
-            Breakfast
-            </button>
-            <div class="divider"></div>
-            <button
-            type="button"
-            //className={`btn btn-${mealType === 'dinner' ? 'light-blue' : 'white'}`}
-            className="btn btn-custom-hover"         
-            onClick={() => mealTypeButtons('lunch')}
-            style={{backgroundColor: mealType === 'lunch' ? 'lightblue' : 'white', width: '120px'}}
-            >
-            Lunch
-            </button>
-            <div class="divider"></div>
-            <button
-            type="button"
-            //className={`btn btn-${mealType === 'dinner' ? 'light-blue' : 'white'}`}
-            className="btn btn-custom-hover"         
-            onClick={() => mealTypeButtons('dinner')}
-            style={{backgroundColor: mealType === 'dinner' ? 'lightblue' : 'white', width: '120px'}}
-            >
-            Dinner 
-            </button>
+                   </div>
+          {/* Meal Type Section */}
+          <div className="meal-type-section">
+            <div className="section-title">Meal Type</div>
+            <div className="meal-type-buttons" role="group" aria-label="Select meal type">
+              <button
+                type="button"
+                className="btn btn-custom-hover"
+                onClick={() => mealTypeButtons('breakfast')}
+                style={{backgroundColor: mealType === 'breakfast' ? 'lightblue' : 'white'}}
+                aria-pressed={mealType === 'breakfast'}
+                aria-label="Filter for breakfast recipes"
+              >
+                🌅 Breakfast
+              </button>
+              <button
+                type="button"
+                className="btn btn-custom-hover"
+                onClick={() => mealTypeButtons('lunch')}
+                style={{backgroundColor: mealType === 'lunch' ? 'lightblue' : 'white'}}
+                aria-pressed={mealType === 'lunch'}
+                aria-label="Filter for lunch recipes"
+              >
+                🌞 Lunch
+              </button>
+              <button
+                type="button"
+                className="btn btn-custom-hover"
+                onClick={() => mealTypeButtons('dinner')}
+                style={{backgroundColor: mealType === 'dinner' ? 'lightblue' : 'white'}}
+                aria-pressed={mealType === 'dinner'}
+                aria-label="Filter for dinner recipes"
+              >
+                🌙 Dinner
+              </button>
+              <button
+                type="button"
+                className="btn btn-custom-hover"
+                onClick={() => mealTypeButtons('snack')}
+                style={{backgroundColor: mealType === 'snack' ? 'lightblue' : 'white'}}
+                aria-pressed={mealType === 'snack'}
+                aria-label="Filter for snack recipes"
+              >
+                🍎 Snack
+              </button>
+            </div>
+                     {/* Dish Type Section */}
+            <div className="section-title" style={{marginTop: '16px'}}>Special Categories</div>
+            <div className="dish-type-row" role="group" aria-label="Select dish category">
+              <button
+                type="button"
+                className="btn btn-custom-hover"
+                onClick={() => dishTypeButtons('desserts')}
+                style={{backgroundColor: dishType === 'desserts' ? 'lightblue' : 'white'}}
+                aria-pressed={dishType === 'desserts'}
+                aria-label="Filter for dessert recipes"
+              >
+                🍰 Dessert
+              </button>
+              <button
+                type="button"
+                className="btn btn-custom-hover"
+                onClick={() => dishTypeButtons('drinks')}
+                style={{backgroundColor: dishType === 'drinks' ? 'lightblue' : 'white'}}
+                aria-pressed={dishType === 'drinks'}
+                aria-label="Filter for drink recipes"
+              >
+                🥤 Drinks
+              </button>
+            </div>
             </div>
 
-            <div className="row mt-2">
-            <button
-            type="button"
-            //className={`btn btn-${mealType === 'dinner' ? 'light-blue' : 'white'}`}
-            className="btn btn-custom-hover"         
-            onClick={() => mealTypeButtons('snack')}
-            style={{backgroundColor: mealType === 'snack' ? 'lightblue' : 'white', width: '120px'}}
+         {/* Eco Score Section */}
+          <div className="eco-section">
+            <label htmlFor="ecoOptions">
+              Environmental Impact
+            </label>
+            <select 
+              id="ecoOptions" 
+              value={ecoScore} 
+              onChange={dropDownEco}
+              className="form-control"
+              aria-describedby="eco-help"
             >
-            Snack
-            </button>
-            
-            <div class="divider"></div>
-
-            <button
-            type="button"
-            //className={`btn btn-${mealType === 'dinner' ? 'light-blue' : 'white'}`}
-            className="btn btn-custom-hover"         
-            onClick={() => dishTypeButtons('desserts')}
-            style={{backgroundColor: dishType === 'desserts' ? 'lightblue' : 'white', width: '120px'}}
-            >
-            Dessert
-            </button>
-            <div class="divider"></div>
-
-            <button
-            type="button"
-            //className={`btn btn-${mealType === 'dinner' ? 'light-blue' : 'white'}`}
-            className="btn btn-custom-hover"         
-            onClick={() => dishTypeButtons('drinks')}
-            style={{backgroundColor: dishType === 'drinks' ? 'lightblue' : 'white', width: '120px'}}
-            >
-            Drink
-            </button>
-            </div>
-            </div>
-
-            <div style={{ marginTop: '30px' , width: '80%'}}>
-            <label htmlFor="ecoOptions">Eco Score: </label>
-            <select id="ecoOptions" value={ecoScore} 
-            onChange={dropDownEco}
-            className="form-control"
->
-                <option value="">--None--</option>
-                {ecoOptions.map((ecoOptions) => (
-                <option key={ecoOptions.value} value={ecoOptions.value}>
-                    {ecoOptions.label}
+              <option value="">All environmental ratings</option>
+              {ecoOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label} - {getEcoDescription(option.value)}
                 </option>
                 ))}
             </select>
+             <div id="eco-help" className="sr-only">
+              Filter recipes by their environmental impact score. A+ is the most eco-friendly, G is the least.
             </div>
+          </div>
         </div>
         
         
