@@ -63,7 +63,7 @@ function App() {
         </div>
         
       
-       {error && <div style={{color: 'red', padding: '10px'}}>{error}</div>}
+       {error && <div className="error-message" role="alert">{error}</div>}
        <RecipeList recipes={data}></RecipeList>
 
       </header>
