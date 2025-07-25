@@ -23,20 +23,31 @@ function App() {
     setError(null);
 
     try {
+      console.log('Making search request with params:', {
+        q: searchQuery,
+        health: dropDownOption,
+        mealType: mealType,
+        dishType: dishType,
+        co2EmissionsClass: ecoScore
+      });
+      
       const userQuery = await axios.get('http://127.0.0.1:5000/recipe', {
         params: {
           q: searchQuery,
-          health_filter: dropDownOption,
+          health: dropDownOption,
           mealType: mealType,
           dishType: dishType,
           co2EmissionsClass: ecoScore
         }});
+      
+      console.log('Search response:', userQuery.data);
       setData(userQuery.data);
     } catch (err) {
       console.error('Error searching', err);
-
+      setError('Failed to search recipes. Please try again.');
     }
   }
+
 
   
 
@@ -52,7 +63,7 @@ function App() {
                     ecoScore = {ecoScore} setEcoScore = {setEcoScore}></Controls>
         </div>
         
-      
+        {error && <div style={{color: 'red', padding: '10px'}}>{error}</div>}
        <RecipeList recipes={data}></RecipeList>
 
       </header>
