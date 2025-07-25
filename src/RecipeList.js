@@ -8,6 +8,7 @@ function RecipeList({recipes}) {
         <div className="RecipeList">
             {recipes && recipes.length > 0 ? (recipes.map((recipe, index) => (
                 <RecipeItem 
+                    key={index}
                     image={recipe.image}
                     label={recipe.label}
                     url={recipe.url}
