@@ -1,53 +1,92 @@
-html,
-body {
-  height: 100%;
+/* Modern CSS Reset and Base Styles */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  color: #2d3748;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
 .App {
-  height: 100vh;
-  /* Full screen height */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .header {
   display: flex;
   flex-grow: 1;
-  flex-direction: row;
-  /* Changed to row for horizontal layout */
-  height: 100%;
+  min-height: 100vh;
+  gap: 0;
 }
 
+/* Controls sidebar */
 .controls {
-  width: 33%;
-  /* Set the width for controls to 30% of the screen */
-  padding: 10px;
-  box-sizing: border-box;
-  /* background-color: #e00b0b; Optional: Add background to distinguish the controls section */
-  overflow: hidden;
-  /* Prevents overflowing content */
-  background-color: #cff0e386;
-  /* align-items: center; */
-  display: flex;
-  justify-content: center;
-  /* Centers content horizontally */
-  
+  width: 350px;
+  min-width: 320px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  position: relative;
 }
 
+/* Main content area */
 .recipe-list {
-  flex-grow: 1;
-  /* Takes the remaining width */
+  flex: 1;
   overflow-y: auto;
-  /* Makes RecipeList scrollable */
-
-  padding: 10px;
-  box-sizing: border-box;
-  /* background-color: #000000; Optional: Different background for the recipe list */
-  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 20px;
   display: flex;
-
   justify-content: center;
-  /* Centers content horizontally */
+}
+
+/* Error message styling */
+.error-message {
+  background: #fed7d7;
+  color: #c53030;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 16px 20px;
+  border-left: 4px solid #c53030;
+  font-weight: 500;
+}
+
+/* Responsive design for tablets and mobile */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .controls {
+    width: 100%;
+    min-width: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    max-height: 60vh;
+  }
+  
+  .recipe-list {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recipe-list {
+    padding: 10px;
+  }
 }

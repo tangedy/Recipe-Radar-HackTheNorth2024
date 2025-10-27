@@ -1,67 +1,232 @@
-.Controls{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 80%; 
-    height: 100%; /* Make the controls fill the container vertically */
-    padding: 20px;
-    box-sizing: border-box;
-    flex-grow: 1; /* Allow the Controls to grow and take up more space */
-
-    .btn-custom {
-        background-color: lightblue;
-        color: white;
-        border: none;
-      }
+.Controls {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  height: 100%;
+  background: transparent;
 }
 
-
-.Controls .form-group {
-  width: 100%; /* Make the form take up 80% of the width of the Controls container */
-  margin-bottom: 20px;
+/* Header section with logo and title */
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+  text-align: center;
 }
 
-.Controls input[type="text"], .Controls select {
-  width: 100%; /* Full width input and select fields */
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+.header-image {
+  width: 80px !important;
+  height: auto;
+  margin-bottom: 12px;
 }
 
-.Controls button {
-  width: 100%; /* Full width buttons */
-  padding: 10px;
-  background-color: #007bff;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-
-
-.Controls .btn-custom-hover {
-  padding: 10px;
-   /* Full width for meal type buttons */
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.meal-type-buttons{
-    display: flex;
-    flex-direction: row;
-    row-gap: 10px;
-    width:fit-content;
-}
-
-.header-text{
+.header-text {
   font-family: "Leckerli One", cursive;
   font-weight: 400;
   font-style: normal;
-  font-size: 3em;
+  font-size: 2.2rem;
+  color: #4a5568;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Search section */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+  color: #2d3748;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-control::placeholder {
+  color: #a0aec0;
+}
+
+/* Search button */
+.btn-custom {
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+}
+
+.btn-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-custom:active {
+  transform: translateY(0);
+}
+
+.btn-custom:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+/* Dietary restrictions section */
+.dietary-section {
+  margin: 24px 0;
+}
+
+.dietary-section label {
+  display: block;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+select.form-control {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+  appearance: none;
+}
+
+/* Meal type buttons */
+.meal-type-section {
+  margin: 24px 0;
+}
+
+.section-title {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.meal-type-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.btn-custom-hover {
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-custom-hover:hover {
+  border-color: #667eea;
+  background: #f7fafc;
+  transform: translateY(-1px);
+}
+
+.btn-custom-hover:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Active state for selected buttons */
+.btn-custom-hover[style*="lightblue"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border-color: #667eea !important;
+  color: white !important;
+}
+
+/* Dish type row */
+.dish-type-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Eco score section */
+.eco-section {
+  margin: 24px 0;
+}
+
+/* Divider styling */
+.divider {
+  display: none; /* Hide dividers since we're using grid layout */
+}
+
+/* Accessibility improvements */
+.Controls *:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .Controls {
+    padding: 16px;
+  }
+  
+  .header-text {
+    font-size: 1.8rem;
+  }
+  
+  .meal-type-buttons {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  
+  .dish-type-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
 }

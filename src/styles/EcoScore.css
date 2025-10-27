@@ -1,12 +1,104 @@
 .eco-score-box {
-    padding: 10px;              
-    font-size: 1.2rem;          
-    font-weight: bold;          
-    color: black;               
-    border: 3px solid;          
-    border-radius: 8px;         
-    display: inline-block;      
-    margin-top: 10px;           
-    min-width: 100px;           
-    text-align: center;        
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  min-width: 80px;
+  justify-content: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.eco-score-box::before {
+  content: "🌱";
+  font-size: 0.8rem;
+}
+
+/* A+ Grade - Excellent */
+.eco-score-box[style*="green"] {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%) !important;
+  border-color: transparent !important;
+}
+
+/* A Grade - Very Good */
+.eco-score-box[style*="#76c7c0"] {
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%) !important;
+  border-color: transparent !important;
+}
+
+/* B Grade - Good */
+.eco-score-box[style*="#add8e6"] {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  border-color: transparent !important;
+}
+
+/* C Grade - Fair */
+.eco-score-box[style*="yellow"] {
+  background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%) !important;
+  border-color: transparent !important;
+  color: #1f2937 !important;
+  text-shadow: none;
+}
+
+/* D Grade - Poor */
+.eco-score-box[style*="#ffcc00"] {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  border-color: transparent !important;
+}
+
+/* E Grade - Very Poor */
+.eco-score-box[style*="#ff8c00"] {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+  border-color: transparent !important;
+}
+
+/* F Grade - Bad */
+.eco-score-box[style*="red"] {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  border-color: transparent !important;
+}
+
+/* G Grade - Very Bad */
+.eco-score-box[style*="darkred"] {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%) !important;
+  border-color: transparent !important;
+}
+
+/* Default/Unknown Grade */
+.eco-score-box[style*="gray"] {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%) !important;
+  border-color: transparent !important;
+}
+
+/* Accessibility improvements */
+.eco-score-box[aria-label] {
+  cursor: help;
+}
+
+.eco-score-box:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Hover effect */
+.eco-score-box:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .eco-score-box {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    min-width: 70px;
   }
+}
